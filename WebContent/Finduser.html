@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Find User</title>
+<link rel="stylesheet" href="/servlet/assets/css/bootstrap.min.css">
+<style>
+	form{
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%);
+	}
+	
+	.col-4{
+		max-width: 100%;
+	}
+	
+	.col-2{
+		max-width: 100%;
+	}
+	
+	h3{
+		position: absolute;
+		top:-100px;
+		left:20%;
+	}
+</style>
+</head>
+<body>
+	<form action="profile" method="get">
+
+		<h3>Find User</h3>
+		<input type="text" class="form-control col-4" name="email" placeholder="Enter User email">
+		<br>
+		<input type="submit" class="btn btn-outline-success  col-2" value="Find"><br><br>
+		<a href="index.html" class="btn btn-outline-primary col-2" >Home</a>
+	</form>
+
+
+	
+	
+</body>
+</html>
