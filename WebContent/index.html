@@ -9,11 +9,17 @@
 </head>
 <body>
 	<h1 class="title">User Registration Form</h1>
-	<a href="Login.html" class="link_1">Log In</a>
-	<a href="Finduser.html" class="link_2">Get User</a>
-	<form action="save">
+<!-- 	<a href="Login.html" class="link_1">Log In</a> -->
+<!-- 	<a href="Finduser-2.html" class="link_2">Get User</a> -->
+	<form action="save" method="post">
 		
+		<input type="text" name="rollno" class="form-control col-4" placeholder="Roll Number">
+		<br>
+		
+		<input type="text" name="enrollno" class="form-control col-4" placeholder="Enroll Number">
+		<br>		
 <!-- 		<label>First Name</label> -->
+
 		<input type="text" name="fname" class="form-control col-4" placeholder="First Name">
 		<br>
 		
@@ -26,10 +32,11 @@
 		<br>
 		
 <!-- 		<label>Contact</label> -->
-		<input type="text" name="mobile" class="form-control col-4" placeholder="Contact">
+		<input type="text" name="city" class="form-control col-4" placeholder="City">
 		<br>
 		
 		<input type="submit" class="btn btn-outline-primary" value="SUBMIT">
+		<a href="Finduser-2.html" class="btn btn-outline-success ">Find User</a>
 	</form>
 </body>
 </html>

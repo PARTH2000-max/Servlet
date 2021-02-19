@@ -14,20 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/save")
 public class Servlet extends  HttpServlet{
-
 	
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-			
+		String roll_no=req.getParameter("rollno");
+		String enroll_no=req.getParameter("enrollno");
 		String fname=req.getParameter("fname");
 		String lname=req.getParameter("lname");
 		String email=req.getParameter("email");
-		String mobile=req.getParameter("mobile");
+		String city=req.getParameter("city");
 		
 		System.out.println(fname.length());
 		
-		String url="jdbc:mysql://localhost:3306/java";
+		String url="jdbc:mysql://localhost:3306/java_prac";
 		String user="root";
 		String pass="Dinesh@9725";
 		Connection conn;
@@ -39,8 +42,8 @@ public class Servlet extends  HttpServlet{
 			conn=DriverManager.getConnection(url, user, pass);
 			System.out.println("DataBase Connected..");
 									
-			String query2="INSERT INTO User (FirstName, LastName, Email,Contact)\n"+
-						"VALUES(?,?,?,?)";
+			String query2="INSERT INTO User (rollno,enrollno,FirstName, LastName, Email,city)\n"+
+						"VALUES(?,?,?,?,?,?)";
 			
 			
 			PreparedStatement prep;
@@ -49,12 +52,15 @@ public class Servlet extends  HttpServlet{
 			resp.setContentType("text/html"); 
 			
 			prep=conn.prepareStatement(query2);
-			prep.setString(1,fname);
-			prep.setString(2,lname);
-			prep.setString(3,email);
-			prep.setString(4,mobile);
+			
+			prep.setString(3,fname);
+			prep.setString(4,lname);
+			prep.setString(5,email);
+			prep.setString(6,city);
 								
-			if(!fname.isEmpty() && !lname.isEmpty() && !email.isEmpty() && !mobile.isEmpty()) {
+			if(!roll_no.isEmpty() && !enroll_no.isEmpty() &&!fname.isEmpty() && !lname.isEmpty() && !email.isEmpty() && !city.isEmpty()) {
+				prep.setInt(1,Integer.parseInt(roll_no));
+				prep.setInt(2,Integer.parseInt(enroll_no));
 				i=prep.executeUpdate();
 				System.out.println('\n');
 				System.out.println("Number of records inserted : "+i);
@@ -62,8 +68,12 @@ public class Servlet extends  HttpServlet{
 				write.println("<p>"+fname+" "+lname+" User registered successfully..</p>");
 				
 			}else {
-				resp.sendRedirect("index.html");
-				write.println("<p> User Not registered ..</p>");
+
+
+				write.println("<script type=\"text/javascript\">");
+				write.println("alert('Enter User details');");
+				write.println("location='index.html';");
+				write.println("</script>");
 			}
 			
 			

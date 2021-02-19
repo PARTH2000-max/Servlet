@@ -28,17 +28,22 @@
 </style>
 </head>
 <body>
-	<form action="profile" method="get">
+	
+	<form action="profiletwo" method="get">
 
 		<h3>Find User</h3>
-		<input type="text" class="form-control col-4" name="email" placeholder="Enter User email">
+		
+		<select name="option" class="form-control col-4">
+			<option value="enroll">Enrollment Number</option>
+			<option value="roll">Roll Number</option>
+		</select>
+		
+		<br>
+		<input type="text" class="form-control col-4" name="num" placeholder="Enter Number">
 		<br>
 		<input type="submit" class="btn btn-outline-success  col-2" value="Find"><br><br>
 		<a href="index.html" class="btn btn-outline-primary col-2" >Home</a>
 	</form>
-
-
-	
 	
 </body>
 </html>

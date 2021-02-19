@@ -15,19 +15,13 @@
   	<servlet-class>com.Dinesh.Servlet</servlet-class>
   </servlet>
   
+
+
+  
   <servlet>
-  	<servlet-name>Login</servlet-name>
-  	<servlet-class>com.Dinesh.Login</servlet-class>
+  	<servlet-name>Profiletwo</servlet-name>
+  	<servlet-class>com.Dinesh.Profiletwo</servlet-class>
   </servlet>
-  
-   <servlet>
-  	<servlet-name>Profile</servlet-name>
-  	<servlet-class>com.Dinesh.Profile</servlet-class>
-  </servlet>
-  
-<!--    <servlet-mapping> -->
-<!--   	<servlet-name>servlet</servlet-name> -->
-<!--   	<url-pattern>/save</url-pattern> -->
-<!--   </servlet-mapping>   -->
+
   
 </web-app>
