@@ -22,7 +22,7 @@ public class Profiletwo extends HttpServlet{
 		String opt=req.getParameter("option");
 		String value=req.getParameter("num");
 		
-		String url="jdbc:mysql://localhost:3306/java_prac";
+		String url="jdbc:mysql://localhost:3306/java_prac_new";
 		String user="root";
 		String pass="Dinesh@9725";
 		Connection conn;

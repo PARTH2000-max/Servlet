@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,10 +31,13 @@ public class Servlet extends  HttpServlet{
 		
 		System.out.println(fname.length());
 		
-		String url="jdbc:mysql://localhost:3306/java_prac";
+		String url="jdbc:mysql://localhost:3306/java_prac_new";
 		String user="root";
 		String pass="Dinesh@9725";
 		Connection conn;
+		
+		PrintWriter write=resp.getWriter();	
+		resp.setContentType("text/html"); 
 	
 		try {
 			
@@ -48,8 +52,7 @@ public class Servlet extends  HttpServlet{
 			
 			PreparedStatement prep;
 			int i=0;
-			PrintWriter write=resp.getWriter();	
-			resp.setContentType("text/html"); 
+		
 			
 			prep=conn.prepareStatement(query2);
 			
@@ -79,10 +82,39 @@ public class Servlet extends  HttpServlet{
 			
 			
 			
-		    
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+		} 
+//		catch (SQLIntegrityConstraintViolationException e) {
+//			
+//			write.println("<script type=\"text/javascript\">");
+//			write.println("alert('"+e+"');");
+//			write.println("location='index.html';");
+//			write.println("</script>");
+//			
+//		}		
+		catch (Exception e) {
+			String msg=e.getMessage();
+			System.out.println(msg);
+			String[] v=msg.split(" ");
+			String display="";
+			String[] errortype=null;
+			for (String string : v) {
+				if (string.startsWith("\'")) {
+					display+=" "+String.valueOf(string);					
+				}
+			}
+			display=String.valueOf(display.replace("\'", ""));
+			System.out.println(display);
+			errortype=display.split(".");
+			for (String string : errortype) {
+				System.out.println(string);
+			}
+			write.println("<script type=\"text/javascript\">");
+			write.println("alert(' Duplicate Entry "+display+"');");
+//			write.println(String.valueOf(display.replace("\'", "")));
+//			write.println("');");			
+			write.println("location='index.html';");
+			write.println("</script>");
+			
 		}
 		
 		

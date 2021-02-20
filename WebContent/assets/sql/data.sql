@@ -6,6 +6,7 @@ CREATE TABLE `User` (
 	`LastName` VARCHAR(255) NOT NULL,
 	`Email` VARCHAR(255) NOT NULL,
 	`city` VARCHAR(255) NOT NULL,
-	UNIQUE KEY `Searchkey` (`rollno`,`enrollno`) USING BTREE,
+	UNIQUE KEY `Roll Number` (`rollno`) USING BTREE,
+	UNIQUE KEY `Enrollment Number` (`enrollno`) USING BTREE,
 	PRIMARY KEY (`id`)
 );
